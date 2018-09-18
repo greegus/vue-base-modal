@@ -11,6 +11,7 @@
             v-bind="modal.props"
             :is="modal.component"
             :class="{isTop: topModal.id === modal.id}"
+            :ref="`modal_${modal.id}`"
             @close="close(modal, $event)"
           />
         </div>
@@ -32,7 +33,7 @@ export default {
 
   computed: {
     topModal() {
-      return this.modals.length ? this.modals[this.modals.length - 1] : null;
+      return this.modals.length ? this.modals[this.modals.length - 1] : null
     }
   },
 
@@ -42,8 +43,18 @@ export default {
     },
 
     close(modal, result = undefined) {
-      this.modals = this.modals.filter(({id}) => id !== modal.id)
-      modal.resolve(result)
+      const closingRoutine = () => {
+        this.modals = this.modals.filter(({id}) => id !== modal.id)
+        modal.resolve(result)
+      }
+
+      const modalInstance = this._getModalInstance(modal)
+
+      if ('before-close' in modalInstance.$listeners) {
+        modalInstance.$emit('before-close', closingRoutine)
+      } else {
+        closingRoutine()
+      }
     },
 
     closeTop() {
@@ -52,21 +63,25 @@ export default {
 
     closeByEscKey(e) {
       if (this.topModal && e.key === "Escape" && !e.defaultPrevented) {
-        e.preventDefault();
-        this.closeTop();
+        e.preventDefault()
+        this.closeTop()
       }
     },
 
     closeByBackdropClick(e, modal) {
       if (e.target === e.currentTarget) {
-        this.close(modal);
+        this.close(modal)
       }
+    },
+
+    _getModalInstance(modal) {
+      return this.$refs[`modal_${modal.id}`][0].$children[0]
     }
   },
 
   mounted() {
     document.body.appendChild(this.$el)
-    document.addEventListener("keydown", this.closeByEscKey);
+    document.addEventListener("keydown", this.closeByEscKey)
     
     bus.$on("open", this.open)
     bus.$on("close", this.close)
@@ -75,13 +90,13 @@ export default {
 
   destroyed() {
     document.body.removeChild(this.$el)
-    document.removeEventListener("keydown", this.closeByEscKey);
+    document.removeEventListener("keydown", this.closeByEscKey)
 
     bus.$off("open", this.open)
     bus.$off("close", this.close)
     bus.$off("closeTop", this.closeTop)
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
