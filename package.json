@@ -1,0 +1,32 @@
+{
+  "name": "vue-base-modal",
+  "version": "1.0.0",
+  "description": "Minimalistic promise-based, programmatically-opening & stacking modal plugin for Vue.js.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greegus/vue-base-modal.git"
+  },
+  "keywords": [
+    "vue",
+    "modal",
+    "plugin",
+    "vuejs",
+    "dialog",
+    "stacking",
+    "promise",
+    "component",
+    "web",
+    "modals"
+  ],
+  "author": "Matus Duchon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/greegus/vue-base-modal/issues"
+  },
+  "homepage": "https://github.com/greegus/vue-base-modal#readme",
+  "devDependencies": {
+    "vue": "2.x"
+  }
+}
