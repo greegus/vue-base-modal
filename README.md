@@ -1,22 +1,22 @@
 
-# Vue Modals
+# Vue base modal
 Minimalistic promise-based, programmatically-opening & stacking modal plugin for Vue.js.
 
 ## Instalation 
 Import and use the plugin in your main file.
 
 ```javascript
-import VueModals from 'vue-modals'
-Vue.use(VueModals)
+import VueBaseModal from 'vue-base-modal'
+Vue.use(VueBaseModal)
 ```
 
-Add `modals-stack` component to the end of your root component (i.e. `App.vue`). This is a placeholder for all modals in the app.
+Add `modal-stack` component to the end of your root component (i.e. `App.vue`). This is a placeholder for all open modals.
 
 ```html
 <template>
   <div class="App">
     ...
-    <modals-stack />
+    <modal-stack />
   </div>
 </template>
 ```
