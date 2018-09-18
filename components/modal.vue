@@ -1,11 +1,13 @@
 <template>
     <div class="Modal">
-      <div class="Modal__header" v-if="$slots.header">
-          <slot name="header" />
-      </div>
+      <div class="Modal__headerWrapper">
+        <div class="Modal__header" v-if="$slots.header || title">
+            <slot name="header">{{ title }}</slot>
+        </div>
 
-      <div class="Modal__close" @click="close()">
-          &times;
+        <div class="Modal__close" @click="close()">
+            <span>&times;</span>
+        </div>
       </div>
 
       <div class="Modal__content" v-if="$slots.content">
@@ -25,6 +27,10 @@ import bus from "../bus.js"
 
 export default {
   name: "modal",
+
+  props: {
+    title: String
+  },
 
   methods: {
     close() {
@@ -56,6 +62,11 @@ $border-line: 1px solid #ccc;
   border-bottom: $border-line;
 }
 
+.Modal__headerWrapper {
+  position: relative;
+  z-index: 1;
+}
+
 .Modal__close {
   position: absolute;
   top: 0;
@@ -64,11 +75,17 @@ $border-line: 1px solid #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5rem;
-  height: 4rem;
+  width: 4rem;
+  min-height: 3.5rem;
+  max-height: 5.5rem;
+  height: 100%;
 
-  font-size: 2.5rem;
+  font-size: 2rem;
   opacity: 0.4;
+
+  span {
+    transform: translateY(-2px);
+  }
 
   &:hover {
     opacity: 1;
