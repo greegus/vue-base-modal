@@ -42,6 +42,7 @@ export default {
 
 <style lang="scss" scoped>
 $border-line: 1px solid #ccc;
+$padding: 1.5rem;
 
 .Modal {
   position: relative;
@@ -58,7 +59,7 @@ $border-line: 1px solid #ccc;
 }
 
 .Modal__header {
-  padding: 1rem 1.5rem;
+  padding: $padding 4rem $padding $padding;
   border-bottom: $border-line;
 }
 
@@ -95,9 +96,8 @@ $border-line: 1px solid #ccc;
 
 .Modal__content {
   flex: 1 1 auto;
-  display: flex;
   overflow: auto;
-  padding: 1rem;
+  padding: $padding;
 }
 
 .Modal__footer {
