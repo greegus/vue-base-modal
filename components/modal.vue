@@ -41,8 +41,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$border-line: 1px solid #ccc;
-$padding: 1.5rem;
+$border-line: 1px solid rgba(black, 0.1);
 
 .Modal {
   position: relative;
@@ -59,7 +58,7 @@ $padding: 1.5rem;
 }
 
 .Modal__header {
-  padding: $padding 4rem $padding $padding;
+  padding: 1.25rem 4rem 1.25rem 1.5rem;
   border-bottom: $border-line;
 }
 
@@ -85,7 +84,7 @@ $padding: 1.5rem;
   opacity: 0.4;
 
   span {
-    transform: translateY(-2px);
+    transform: translateY(-0.25rem);
   }
 
   &:hover {
@@ -97,7 +96,7 @@ $padding: 1.5rem;
 .Modal__content {
   flex: 1 1 auto;
   overflow: auto;
-  padding: $padding;
+  padding: 1.5rem;
 }
 
 .Modal__footer {
