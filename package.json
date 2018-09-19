@@ -1,6 +1,6 @@
 {
   "name": "vue-base-modal",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Minimalistic promise-based, programmatically-opening & stacking modal plugin for Vue.js.",
   "main": "dist/index.umd.js",
   "module": "dist/index.esm.js",
